@@ -5,7 +5,6 @@
     <script type="text/javascript" src="__JS__/Admin/jquery.js"></script>
     <link href="__CSS__/Admin/main/main.css" rel="stylesheet" type="text/css"/>
     <link href="__CSS__/Admin/main/chrome.css" rel="stylesheet" type="text/css"/>
-    <link href="__CSS__/Admin/main/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <script type="text/javascript" src="__JS__/Admin/main/artDialog.min.js"></script><!--弹窗插件-->
     <script type="text/javascript" src="__JS__/Admin/main/deleteArticle.js"></script>
     <script type="text/javascript" src="__JS__/Admin/main/eva.js"></script>
@@ -78,7 +77,7 @@
         }
 
         .vote_bar div {
-            background: url("../../image/admin/x_bg.png") repeat-x left -194px;
+            background: url(../../image/admin/x_bg.png) repeat-x left -194px;
             float: left;
             position: relative;
             height: 16px;
@@ -99,13 +98,13 @@
         }
 
         input.date {
-            background: #fff url("__IMAGE__/Admin/date.png") no-repeat right 1px;
+            background: #fff url(__IMAGE__/Admin/date.png) no-repeat right 1px;
             padding-right: 18px;
             font-size: 12px;
         }
 
         .ruler {
-            background: url("../../image/admin/ruler.gif") repeat-x scroll 0 7px transparent
+            background: url(../../image/admin/ruler.gif) repeat-x scroll 0 7px transparent
         }
 
         .btns {
@@ -161,7 +160,7 @@
 
         /*button*/
         .btn, .btn:hover {
-            background: url("__IMAGE__/Admin/btn.png") center 0 no-repeat;
+            background: url(__IMAGE__/Admin/btn.png) center 0 no-repeat;
             border: none;
             height: 27px;
             width: 68px;
@@ -180,19 +179,12 @@
 
 <div class="panel">
     <div class="panel-head">
-        <span>留言列表</span>
+        <span>导出留言</span>
     </div>
 </div>
 
 <div class="highlight">
-    <form name="searchform" action="{:url('Guestbook/initGuestbookList')}" method="get">
-        <select name="field">
-            <option value="num">请选择</option>
-            <option value="gid"> 按留言ID</option>
-            <option value="site"> 按标识</option>
-            <option value="name"> 按姓名</option>
-            <option value="phone"> 按电话</option>
-        </select>
+    <form name="searchform" action="{:url('Guestbook/exportGuest')}" method="get">
 
         <input type="text" class="date input-text input-hover" size="21" id="fromtime" name="fromtime"
                value="{php} echo (date('Y-m-d',$time-259200).' 00:00:00');{/php}" readonly>&nbsp;
@@ -208,7 +200,7 @@
         </script>
         至
         <input type="text" class="date input-text  input-hover" size="21" id="totime" name="totime"
-               value="{php} echo (date('Y-m-d',$time).' 23:59:59');{/php}" readonly>&nbsp;
+               value="{php} echo (date('Y-m-d',$time).' 00:00:00');{/php}" readonly>&nbsp;
         <script language="javascript" type="text/javascript">
             date = new Date();
             document.getElementById("totime").value = "{php} echo (date('Y-m-d',$time).' 23:59:59');{/php}";
@@ -219,65 +211,12 @@
                 timeFormat: "24"
             });
         </script>
-        <input type="text" value="" name="q">
         <div class="btns">
-            <span><input type="submit" value="搜 索" class="button" name="dosubmit"></span>
+            <span><input type="submit" value="导 出" class="button" name="dosubmit"></span>
         </div>
     </form>
 </div>
 
-<div class="panel-content" style="width:100%;">
-    <form id="data-form" method="post">
-        <table class="list-table">
-            <tr>
-                <th style="text-align:center; width:2%;"></th>
-                <th width="4%" style="text-align:center;">id</th>
-                <th width="4%" style="text-align:center;">姓名</th>
-                <th width="5%" style="text-align:center;">电话</th>
-                <!--<th width="15%" style="text-align:center;">地址</th>
-                <th width="25%" style="text-align:center;">留言</th>-->
-                <th width="10%" style="text-align:center;">标识</th>
-                <th width="10%" style="text-align:center;">留言时间</th>
-                <th width="5%" style="text-align:center; border-right:1px solid #CCCCCC;">操作</th>
-            </tr>
-            {volist name="list" id="bookList"}
-            <tr>
-                <td style="text-align:center; width:4%;"><input type="checkbox" name="id[]" value="{$bookList.id}" /></td>
-                <td style="text-align:center;">{$bookList.id}</td>
-                <td style="text-align:center;">{$bookList.name}</td>
-                <td style="text-align:center;">{$bookList.phone}</td>
-                <!--<td style="text-align:center;">{$bookList.address}</td>
-                <td style="text-align:center;">{$bookList.content}</td>-->
-                <td style="text-align:center;">{$bookList.diqu}</td>
-                <!--<td style="text-align:center;"><a href="https://www.baidu.com/s?wd={$bookList.mip}" target="_blank">{$bookList.mip}</a></td>-->
-                <!--
-                <if condition="$bookList.is_read eq 1">
-                    <td style="text-align:center;" class="hots"><a href="javasript:void(0);" style="color:green;">已读</a></td>
-                    <else />
-                    <td style="text-align:center;" class="hots"><a href="javasript:void(0);" style="color:red;">未读</a></td>
-                </if>
-                -->
-                <td style="text-align:center;">{$bookList.create_time|strtotime|date="Y-m-d H:i:s",###}</td>
-                <td style="text-align:center; border:1px solid #CCCCCC;">
-                    <a href="{:url('Guestbook/initReadGuestbook')}?id={$bookList.id}">查看</a>
-                </td>
-            </tr>
-            {/volist}
-        </table>
-    </form>
-</div>
-
-<div class="page" style="width:100%;">
-    <ul>
-        <li>
-            <input type="checkbox" class="selected-btu"/><span>&nbsp;&nbsp;全选/全不选&nbsp;&nbsp;</span>
-            <a class="delete-btu" href="{:url('Guestbook/delete')}">删除</a>
-            共<span class="totalNum">{$count}</span>条留言
-        </li>
-    </ul>
-</div>
-
-<div id="pageLists">{$page}</div>
 
 </body>
 </html>
