@@ -442,7 +442,7 @@
     <div class="copyright">
         <span>ThinkPHP V<?php echo THINK_VERSION; ?></span>
         <p> { STAY HUNGRY.  STAY FOOLISH.  } </p>
-        <p> 联系站长: <a href="http://www.lanceyi.com" target="_bank"></a> </p>
+        <p> 联系站长: <a href="http://www.lanceyi.com" target="_bank">www.lanceyi.com</a> </p>
     </div>
     <?php if(\think\App::$debug) { ?>
     <script>

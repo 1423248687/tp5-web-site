@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:72:"D:\Github\tp5-web-site\public/../application/index\view\index\index.html";i:1558176408;s:64:"D:\Github\tp5-web-site\application\index\view\common\header.html";i:1558176408;s:65:"D:\Github\tp5-web-site\application\index\view\common\message.html";i:1558176408;s:64:"D:\Github\tp5-web-site\application\index\view\common\footer.html";i:1558176408;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:72:"D:\Github\tp5-web-site\public/../application/index\view\index\index.html";i:1558176408;s:64:"D:\Github\tp5-web-site\application\index\view\common\header.html";i:1558176408;s:65:"D:\Github\tp5-web-site\application\index\view\common\message.html";i:1558184692;s:64:"D:\Github\tp5-web-site\application\index\view\common\footer.html";i:1558176408;}*/ ?>
 <!-- 头部 -->
 <!DOCTYPE html>
 <html>
@@ -64,7 +64,6 @@
                 <div class="p-input form-name">手机<input name="mobile" class="text" placeholder="如：13888888888" value=""
                                                         type="text"></div>
                 <div class="p-button">
-                    <input type="hidden" name="token" value="<?php echo $token; ?>"/>
                     <input type="hidden" name="keyword" value="<?php echo $keyword; ?>"/>
                     <input type="hidden" name="plan" value="<?php echo $plan; ?>"/>
                     <input type="hidden" name="unit" value="<?php echo $unit; ?>"/>
