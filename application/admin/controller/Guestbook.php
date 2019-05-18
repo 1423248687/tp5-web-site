@@ -185,6 +185,7 @@ class Guestbook extends Index
         import("Org.Util.PHPExcel.IOFactory.php");
         $headArr = array("id", "姓名", "电话", "标识", "留言时间");
         $this->getExcel($data);
+        $this->success();
     }
 
     private function getExcel($data)
@@ -195,7 +196,7 @@ class Guestbook extends Index
             die("没有符合条件的数据可导出!");
         }
         //2.加载PHPExcle类库
-        vendor('PHPExcel.PHPExcel');
+        vendor('PHPExcel.PHPExcel'); // 此为插件模式
         //3.实例化PHPExcel类
         $objPHPExcel = new \PHPExcel();
         //4.激活当前的sheet表
@@ -235,6 +236,5 @@ class Guestbook extends Index
         //下载文件在浏览器窗口
         $objWriter->save('php://output');
         exit;
-
     }
 }
