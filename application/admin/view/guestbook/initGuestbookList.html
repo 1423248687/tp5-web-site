@@ -257,7 +257,7 @@
                     <td style="text-align:center;" class="hots"><a href="javasript:void(0);" style="color:red;">未读</a></td>
                 </if>
                 -->
-                <td style="text-align:center;">{$bookList.create_time|strtotime|date="Y-m-d H:i:s",###}</td>
+                <td style="text-align:center;">{$bookList.create_time|date="Y-m-d H:i:s",###}</td>
                 <td style="text-align:center; border:1px solid #CCCCCC;">
                     <a href="{:url('Guestbook/initReadGuestbook')}?id={$bookList.id}">查看</a>
                 </td>
