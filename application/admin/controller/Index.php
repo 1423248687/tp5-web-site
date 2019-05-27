@@ -44,7 +44,7 @@ class Index extends Controller
         $result = UserModel::get(['name' => $name, 'password' => $pwd]);
         if ($result) {
             session('admin', '管理员l003');
-            $this->success('正在登陆,请稍后...', 'main',null,0);
+            $this->success('正在登陆,请稍后...', 'main',null,2);
         } else {
             $this->error('用户名或密码错误');
         }
@@ -88,7 +88,7 @@ class Index extends Controller
     {
         $this->checkLogin();
         session('admin', null);
-        $this->success('退出成功', '/admin',null,0);
+        $this->success('退出成功', '/admin',null,2);
     }
 
     // 修改密码

@@ -193,7 +193,7 @@ class Guestbook extends Index
         //1.从数据库中取出数据
         //对数据进行检验
         if (empty($data) || !is_array($data)) {
-            die("没有符合条件的数据可导出!");
+            $this->error("没有符合条件的数据可导出!");
         }
         //2.加载PHPExcle类库
         vendor('PHPExcel.PHPExcel'); // 此为插件模式
